@@ -2,7 +2,6 @@ import React from "react";
 import "./Meals.css";
 
 function Meals({ name, setName, requestApi, schoolList }) {
-  console.log(schoolList);
   return (
     <div>
       <form onSubmit={requestApi}>
@@ -17,6 +16,16 @@ function Meals({ name, setName, requestApi, schoolList }) {
         <button type="submit">검색</button>
         <h3 className="h3"> </h3>
       </form>
+      {schoolList.map((school) => {
+        const { school_name, school_type, school_locate } = school;
+        return (
+          <button>
+            <p>{school_name}</p>
+            <p>{school_type}</p>
+            <p>{school_locate}</p>
+          </button>
+        );
+      })}
     </div>
   );
 }
