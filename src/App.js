@@ -27,6 +27,7 @@ function App() {
       // api 불러온것에서 data 안에만 볼 수 있음.
       `${server}/search-school?school_name=${name}`
     );
+    //
 
     return data;
   };
