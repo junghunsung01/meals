@@ -1,8 +1,8 @@
 import React from "react";
 import "./Meals.css";
-import Time from "./Time";
+import { withRouter } from "react-router-dom";
 
-function Meals({ name, setName, requestApi, schoolList }) {
+function Meals({ name, setName, requestApi, schoolList, history }) {
   return (
     <div>
       <form onSubmit={requestApi}>
@@ -15,7 +15,6 @@ function Meals({ name, setName, requestApi, schoolList }) {
           onChange={(event) => setName(event.target.value)}
         />
         <button type="submit">검색</button>
-        <h3 className="h3"> </h3>
       </form>
       {schoolList.map((school) => {
         const {
@@ -36,7 +35,11 @@ function Meals({ name, setName, requestApi, schoolList }) {
           <button
             key={school_code}
             className="schoolButton"
-            onClick={() => localcode(data)}
+            onClick={() => {
+              localCode(data);
+              history.push("/time");
+              // 버튼 클릭시 /time으로 보내준다.
+            }}
           >
             <p>{school_name}</p>
             <p>{school_type}</p>
@@ -44,13 +47,12 @@ function Meals({ name, setName, requestApi, schoolList }) {
           </button>
         );
       })}
-      <Time />
     </div>
   );
 }
 
-function localcode(data) {
+function localCode(data) {
   localStorage.setItem("getTime", JSON.stringify(data));
 }
 
-export default Meals;
+export default withRouter(Meals);
