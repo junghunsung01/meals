@@ -6,15 +6,13 @@ function Time() {
   const { school_name, school_locate, office_code, school_code } = JSON.parse(
     localStorage.getItem("getTime")
   );
-
-  console.log(school_name);
+  // 형변환 시키면서 localStorage에 있는 getItem에 저장된 데이터를 불러옴.
   const [status, setStatus] = useState("");
 
   const TimeApi = () => {
     getApi()
       .then((response) => {
         if (response.status === 200) {
-          console.log(response);
           // response.status === 200은 api를 성공적으로 불러와서 사용함.
         }
       })
@@ -35,6 +33,7 @@ function Time() {
 
   useEffect(() => {
     TimeApi();
+    // render할때 실행한다.
   }, []);
 
   return (

@@ -6,6 +6,7 @@ function Meals({ name, setName, requestApi, schoolList, history }) {
   return (
     <div>
       <form onSubmit={requestApi}>
+        {/* onSubmit이 값 넘겨주기  */}
         <input
           type="text"
           placeholder="학교를 입력하세요"
@@ -13,8 +14,10 @@ function Meals({ name, setName, requestApi, schoolList, history }) {
           value={name}
           // 이름 넘겨주기
           onChange={(event) => setName(event.target.value)}
+          // input에 있는값 setName으로 넘겨주기
         />
         <button type="submit">검색</button>
+        {/* 버튼을 누르면 폼이 제출됨.*/}
       </form>
       {schoolList.map((school) => {
         const {
@@ -54,5 +57,6 @@ function Meals({ name, setName, requestApi, schoolList, history }) {
 function localCode(data) {
   localStorage.setItem("getTime", JSON.stringify(data));
 }
+// loaclstorage에 getTime이라는 이름으로 data를 json형으로 저장
 
 export default withRouter(Meals);
