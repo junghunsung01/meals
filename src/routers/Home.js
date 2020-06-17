@@ -18,7 +18,7 @@ function Home() {
     getApi(name).then((response) => {
       if (response.status === 200) {
         // response.status === 200은 api를 성공적으로 불러와서 사용함.
-        setSchoolList(response.data.schoolList);
+        setSchoolList(response.data.schools);
       }
     });
   };
@@ -26,8 +26,9 @@ function Home() {
   const getApi = async (name) => {
     const { data } = await axios.get(
       // api 불러온것에서 data 안에만 볼 수 있음.
-      `${server}/search-school?school_name=${name}`
+      `${server}/search?school_name=${name}`
     );
+    console.log(data);
     //
 
     return data;

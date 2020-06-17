@@ -1,7 +1,6 @@
 import React from "react";
-import { Switch, Redirect, Route, BrowserRouter } from "react-router-dom";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 import Home from "./routers/Home";
-import Meals from "./routers/Meals";
 import Time from "./Time";
 
 function App() {

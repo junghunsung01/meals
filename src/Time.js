@@ -18,6 +18,7 @@ function Time() {
       })
       .catch((Error) => {
         if (Error.response.status === 404) {
+          console.log(Error.response.status);
           setStatus(404);
         }
       });
@@ -26,8 +27,9 @@ function Time() {
   const getApi = async () => {
     const { data } = await axios.get(
       // api 불러온것에서 data 안에만 볼 수 있음.
-      `${server}/v2/today?school_id=${school_code}&${office_code}`
+      `${server}/meals?school_id=${school_code}&office_code=${office_code}&date=${""}`
     );
+    console.log(data);
     return data;
   };
 

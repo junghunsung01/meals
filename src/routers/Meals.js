@@ -20,23 +20,16 @@ function Meals({ name, setName, requestApi, schoolList, history }) {
         {/* 버튼을 누르면 폼이 제출됨.*/}
       </form>
       {schoolList.map((school) => {
-        const {
-          school_name,
-          school_type,
-          school_locate,
-          school_code,
-          office_code,
-        } = school;
+        const { school_name, school_locate, school_id, office_code } = school;
         const data = {
           school_name,
-          school_type,
           school_locate,
-          school_code,
+          school_id,
           office_code,
         };
         return (
           <button
-            key={school_code}
+            key={school_id}
             className="schoolButton"
             onClick={() => {
               localCode(data);
@@ -45,7 +38,7 @@ function Meals({ name, setName, requestApi, schoolList, history }) {
             }}
           >
             <p>{school_name}</p>
-            <p>{school_type}</p>
+
             <p>{school_locate}</p>
           </button>
         );
