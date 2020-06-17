@@ -21,6 +21,7 @@ function Meals({ name, setName, requestApi, schoolList, history }) {
       </form>
       {schoolList.map((school) => {
         const { school_name, school_locate, school_id, office_code } = school;
+        // 비구조화 할당
         const data = {
           school_name,
           school_locate,
@@ -38,7 +39,6 @@ function Meals({ name, setName, requestApi, schoolList, history }) {
             }}
           >
             <p>{school_name}</p>
-
             <p>{school_locate}</p>
           </button>
         );
@@ -48,6 +48,7 @@ function Meals({ name, setName, requestApi, schoolList, history }) {
 }
 
 function localCode(data) {
+  console.log(data);
   localStorage.setItem("getTime", JSON.stringify(data));
 }
 // loaclstorage에 getTime이라는 이름으로 data를 json형으로 저장
