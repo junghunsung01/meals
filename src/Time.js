@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { server } from "./config/server.json";
-// import "./component/Homecss/Time.scss";
+import "./component/style/Time.scss";
 
 function Time() {
   const { school_name, school_locate, office_code, school_id } = JSON.parse(
@@ -26,10 +26,6 @@ function Time() {
           setStatus(404);
         }
       });
-  };
-
-  const getDate = () => {
-    var dateFormat = require("dateformat");
   };
 
   const getApi = async (year, month, date) => {
@@ -58,7 +54,7 @@ function Time() {
 
       <button
         onClick={() => {
-          getDate();
+          getApi();
         }}
       >
         오늘
@@ -75,19 +71,32 @@ function Time() {
         <div>급식 정보가 없습니다.</div>
       ) : (
         <div className="meals">
-          {meals}
-          {/* {meals.split("<br/>").map((item) => {
-            return (
-              <>
-                {item}
-                <br />
-              </>
-            );
-          })} */}
+          <div className="meals_schoolName">
+            <p>{school_name}</p>
+          </div>
+          <div className="meals_locate">
+            <p>{school_locate}</p>
+          </div>
+          <div className="meals_breakfast">
+            <div className="meals_breakfast_text">
+              <span>아침</span>
+            </div>
+            <div className="meals_breakfast_importmation">{meals[0]}</div>
+          </div>
+          <div className="meals_lunch">
+            <div className="meals_lunch_text">
+              <span>점심</span>
+            </div>
+            <div className="meals_lunch_importmation">{meals[1]}</div>
+            <div className="meals_dinner">
+              <div className="meals_dinner_text">
+                <span>저녁</span>
+              </div>
+              <div className="meals_dinner_importmation">{meals[2]}</div>
+            </div>
+          </div>
         </div>
       )}
-      <p>{school_name}</p>
-      <p>{school_locate}</p>
     </div>
   );
 }
