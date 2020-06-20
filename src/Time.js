@@ -13,7 +13,18 @@ function Time() {
   const [meals, setMeals] = useState("", []);
   const [date, setDate] = useState(moment().format("yyyyMMDD"));
 
-  const TimeApi = () => {
+  const getApi = useCallback(async () => {
+    /* 모멘트 괄호 아무겂도 x 현재시간 server한테서 
+    시간을 받아와서 format할때 변수를 넣어줌.*/
+    const { data } = await axios.get(
+      // api 불러온것에서 data 안에만 볼 수 있음.
+      `${server}/meals?school_id=${school_id}&office_code=${office_code}&date=${date}`
+    );
+    return data;
+  }, [date, office_code, school_id]);
+
+  const TimeApi = useCallback(() => {
+    console.log("asdf");
     getApi()
       .then((response) => {
         if (response.status === 200) {
@@ -28,43 +39,28 @@ function Time() {
           setStatus(404);
         }
       });
-  };
+  }, [getApi]);
 
   const handlePlusDay = useCallback(() => {
     setDate(moment(date).add("+1", "day").format("yyyyMMDD"));
-    console.log(date);
-    TimeApi();
   }, [date]);
 
   const handleResetDay = useCallback(() => {
     setDate(moment().format("yyyyMMDD"));
-    console.log(date);
-    TimeApi();
     // add가 day에 -1을 + 해준다.
   }, [date]);
 
   const handleMinusDay = useCallback(() => {
     setDate(moment(date).add("-1", "day").format("yyyyMMDD"));
-    console.log(date);
-    TimeApi();
     // add가 day에 -1을 + 해준다.
   }, [date]);
-
-  const getApi = async () => {
-    /* 모멘트 괄호 아무겂도 x 현재시간 server한테서 
-    시간을 받아와서 format할때 변수를 넣어줌.*/
-    const { data } = await axios.get(
-      // api 불러온것에서 data 안에만 볼 수 있음.
-      `${server}/meals?school_id=${school_id}&office_code=${office_code}&date=${date}`
-    );
-    console.log(data.data.meals);
-    return data;
-  };
 
   useEffect(() => {
     TimeApi();
     // render할때 실행한다.
-  }, []);
+  }, [setDate, date]);
+  // 컴포넌트가 한번 실행될때마다 1번 실행
+  // date가 바뀔때마다 render
 
   return (
     <div>
