@@ -30,8 +30,23 @@ function Time() {
       });
   };
 
-  const handlePrevDate = useCallback(() => {
+  const handlePlusDay = useCallback(() => {
+    setDate(moment(date).add("+1", "day").format("yyyyMMDD"));
+    console.log(date);
+    TimeApi();
+  }, [date]);
+
+  const handleResetDay = useCallback(() => {
+    setDate(moment().format("yyyyMMDD"));
+    console.log(date);
+    TimeApi();
+    // add가 day에 -1을 + 해준다.
+  }, [date]);
+
+  const handleMinusDay = useCallback(() => {
     setDate(moment(date).add("-1", "day").format("yyyyMMDD"));
+    console.log(date);
+    TimeApi();
     // add가 day에 -1을 + 해준다.
   }, [date]);
 
@@ -53,11 +68,29 @@ function Time() {
 
   return (
     <div>
-      <button onClick={() => {}}>어제</button>
+      <button
+        onClick={() => {
+          handleMinusDay();
+        }}
+      >
+        어제
+      </button>
 
-      <button onClick={() => {}}>오늘</button>
+      <button
+        onClick={() => {
+          handleResetDay();
+        }}
+      >
+        오늘
+      </button>
 
-      <button onClick={() => {}}>내일</button>
+      <button
+        onClick={() => {
+          handlePlusDay();
+        }}
+      >
+        내일
+      </button>
       {status === 404 ? (
         <div>급식 정보가 없습니다.</div>
       ) : (
