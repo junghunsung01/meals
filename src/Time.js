@@ -63,70 +63,75 @@ function Time() {
   // date가 바뀔때마다 render
 
   return (
-    <div>
-      <button
-        onClick={() => {
-          handleMinusDay();
-        }}
-      >
-        어제
-      </button>
+    <div className="Time">
+      <div className="Time_button">
+        <div
+          className="Time_button_yesterday"
+          onClick={() => {
+            handleMinusDay();
+          }}
+        >
+          어제
+        </div>
+        <div
+          className="Time_button_today"
+          onClick={() => {
+            handleResetDay();
+          }}
+        >
+          오늘
+        </div>
 
-      <button
-        onClick={() => {
-          handleResetDay();
-        }}
-      >
-        오늘
-      </button>
-
-      <button
-        onClick={() => {
-          handlePlusDay();
-        }}
-      >
-        내일
-      </button>
+        <div
+          className="Time_button_tomorrow"
+          onClick={() => {
+            handlePlusDay();
+          }}
+        >
+          내일
+        </div>
+      </div>
       {status === 404 ? (
         <div>급식 정보가 없습니다.</div>
       ) : (
-        <div className="meals">
+        <div className="Time_">
           {}
           {/* <Moment interval={30000}>1976-04-19T12:59-0500</Moment> */}
-          <div className="meals_schoolName">
+          <div className="Time_schoolName">
             <p>{school_name}</p>
           </div>
-          <div className="meals_locate">
+          <div className="Time_locate">
             <p>{school_locate}</p>
           </div>
-          <div className="meals_breakfast">
-            <div className="meals_breakfast_text">
-              <span>아침</span>
+
+          <div className="Time_information">
+            <div className="Time_information_breakfast">
+              <div className="Time_information_breakfast_text">
+                <span>아침</span>
+              </div>
+              <div className="Time_information_breakfast_impormation">
+                {meals[0] &&
+                  meals[0].split("<br/>").map((meal) => <div>{meal}</div>)}
+              </div>
             </div>
-            <div className="meals_breakfast_importmation">
-              {meals[0] &&
-                meals[0].split("<br/>").map((meal) => <div>{meal}</div>)}
-            </div>
-          </div>
-          <div className="meals_lunch">
-            <div className="meals_lunch_text">
-              <span>점심</span>
-            </div>
-            <div className="meals_lunch_importmation">
-              <div className="meals_breakfast_importmation">
+
+            <div className="Time_information_lunch">
+              <div className="Time_information_lunch_text">
+                <span>점심</span>
+              </div>
+              <div className="Time_information_lunch_importmation">
                 {meals[1] &&
                   meals[1].split("<br/>").map((meal) => <div>{meal}</div>)}
               </div>
             </div>
-            <div className="meals_dinner">
-              <div className="meals_dinner_text">
+
+            <div className="Time_information_dinner">
+              <div className="Time_information_dinner_text">
                 <span>저녁</span>
               </div>
-              <div className="meals_dinner_importmation">
-                <div className="meals_breakfast_importmation">
-                  {meals[2] &&
-                    meals[2].split("<br/>").map((meal) => <div>{meal}</div>)}
-                </div>
+              <div className="Time_information_dinner_impormation">
+                {meals[2] &&
+                  meals[2].split("<br/>").map((meal) => <div>{meal}</div>)}
               </div>
             </div>
           </div>
