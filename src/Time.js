@@ -12,6 +12,7 @@ function Time() {
   const [status, setStatus] = useState("");
   const [meals, setMeals] = useState("", []);
   const [date, setDate] = useState(moment().format("yyyyMMDD"));
+  // 기본적으로 날짜를 오늘로 초기화
 
   const getApi = useCallback(async () => {
     /* 모멘트 괄호 아무겂도 x 현재시간 server한테서 
@@ -24,19 +25,17 @@ function Time() {
   }, [date, office_code, school_id]);
 
   const TimeApi = useCallback(() => {
-    console.log("asdf");
     getApi()
       .then((response) => {
         if (response.status === 200) {
-          console.log(response.status);
           setMeals(response.data.meals);
           // response.status === 200은 api를 성공적으로 불러와서 사용함.
         }
       })
       .catch((Error) => {
         if (Error.response.status === 404) {
-          // console.log(Error.response.status);
           setStatus(404);
+          //에러를 setStatus에 저장해줘서 render할때 급식정보가 없다고 뛰어준다.
         }
       });
   }, [getApi]);
@@ -54,6 +53,7 @@ function Time() {
     setDate(moment(date).add("-1", "day").format("yyyyMMDD"));
     // add가 day에 -1을 + 해준다.
   }, [date]);
+  // useCallback은 함수 재사용(메모라 공간 절약)
 
   useEffect(() => {
     TimeApi();
@@ -95,8 +95,6 @@ function Time() {
         <div>급식 정보가 없습니다.</div>
       ) : (
         <div className="Time_">
-          {}
-          {/* <Moment interval={30000}>1976-04-19T12:59-0500</Moment> */}
           <div className="Time_schoolName">
             <p>{school_name}</p>
           </div>
@@ -112,6 +110,8 @@ function Time() {
               <div className="Time_information_breakfast_impormation">
                 {meals[0] &&
                   meals[0].split("<br/>").map((meal) => <div>{meal}</div>)}
+                {/* &연산자를 써주는 이유는 서버에 값이 받아올때까지 기다려주는것(필요없는 연산을 이용하여서
+                    서버에서 응답을 기다림) */}
               </div>
             </div>
 
