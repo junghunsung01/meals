@@ -20,7 +20,7 @@ function Time() {
     const { data } = await axios.get(
       // api 불러온것에서 data 안에만 볼 수 있음.
       `${server}/meals?school_id=${school_id}&office_code=${office_code}&date=${date}`
-    );
+    ); 
     return data;
   }, [date, office_code, school_id]);
 
