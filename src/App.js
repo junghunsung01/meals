@@ -1,14 +1,14 @@
 import React from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
-import Home from "./routers/Home";
-import Time from "./Time";
+import TimeInfo from "./components/Time/TimeInfo";
+import SchoolSearhPage from "./pages/SchoolSearhPage";
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/time" exact component={Time} />
+        <Route path="/" exact component={SchoolSearhPage} />
+        <Route path="/time" exact component={TimeInfo} />
       </Switch>
     </BrowserRouter>
   );
