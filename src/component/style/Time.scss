@@ -1,0 +1,61 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+.Time {
+  display: flex;
+  flex-direction: column;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  width: 100%;
+  height: 100vh;
+  &_button {
+    display: flex;
+    &_yesterday {
+      margin-right: 5rem;
+      &:hover {
+        color: blue;
+      }
+    }
+    &_today {
+      &:hover {
+        color: blue;
+      }
+    }
+    &_tomorrow {
+      margin-left: 5rem;
+      &:hover {
+        color: blue;
+      }
+    }
+  }
+  &_ {
+    background: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    display: -webkit-flex;
+    align-items: center;
+  }
+  &_schoolName {
+    background: blue;
+    text-align: center;
+  }
+  &_locate {
+    background: red;
+  }
+  &_information {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    margin-top: 3rem;
+    &_breakfast {
+      margin-right: 5rem;
+    }
+    &_dinner {
+      margin-left: 5rem;
+    }
+  }
+}

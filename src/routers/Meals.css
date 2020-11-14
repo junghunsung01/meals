@@ -1,0 +1,9 @@
+.school {
+  display: block;
+}
+.schoolButton {
+  width: 200px;
+  min-height: 150px;
+  max-height: 150px;
+  float: left;
+}
