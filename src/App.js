@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
-import TimeInfo from "./components/Time/TimeInfo";
+import TimeInfoContainer from "./containers/TimeInfoContainer";
 import SchoolSearhPage from "./pages/SchoolSearhPage";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={SchoolSearhPage} />
-        <Route path="/time" exact component={TimeInfo} />
+        <Route path="/time" exact component={TimeInfoContainer} />
       </Switch>
     </BrowserRouter>
   );

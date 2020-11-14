@@ -1,61 +1,47 @@
-* {
-  margin: 0px;
-  padding: 0px;
-}
 .Time {
   display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid black;
   flex-direction: column;
-  display: -webkit-flex;
+  width: 30rem;
+  height: 15rem;
+  padding: 5px;
+  &-button {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    &:hover {
+    }
+  }
+  &-info {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.center {
+  display: flex;
+  align-items: center;
+}
+.button {
+  display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
-  width: 100%;
-  height: 100vh;
-  &_button {
-    display: flex;
-    &_yesterday {
-      margin-right: 5rem;
-      &:hover {
-        color: blue;
-      }
-    }
-    &_today {
-      &:hover {
-        color: blue;
-      }
-    }
-    &_tomorrow {
-      margin-left: 5rem;
-      &:hover {
-        color: blue;
-      }
-    }
+  transition: 0.2s;
+  width: 4rem;
+  height: 1.5rem;
+  border-radius: 5px;
+  border: 1px solid gray;
+  &:hover {
+    color: white;
+    border: none;
+    background: #3c50e0;
   }
-  &_ {
-    background: whitesmoke;
-    display: flex;
-    flex-direction: column;
-    display: -webkit-flex;
-    align-items: center;
-  }
-  &_schoolName {
-    background: blue;
-    text-align: center;
-  }
-  &_locate {
-    background: red;
-  }
-  &_information {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-
-    margin-top: 3rem;
-    &_breakfast {
-      margin-right: 5rem;
-    }
-    &_dinner {
-      margin-left: 5rem;
-    }
-  }
+}
+.schoolName {
+  font-weight: bold;
+  font-size: 1.3rem;
 }

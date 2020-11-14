@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import { server } from "./config/server.json";
+import { server } from "../config/config.json";
 import moment from "moment";
 import TimeInfo from "../components/Time/TimeInfo";
 
-const Time = () => {
+const TimeInfoContainer = () => {
   const { school_name, school_locate, office_code, school_id } = JSON.parse(
     localStorage.getItem("getTime")
   );
@@ -75,4 +75,4 @@ const Time = () => {
   );
 };
 
-export default Time;
+export default TimeInfoContainer;

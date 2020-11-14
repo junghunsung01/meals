@@ -46,6 +46,7 @@ const SchoolSearchContainer = () => {
 
   const localCode = (data) => {
     console.log(data);
+
     localStorage.setItem("getTime", JSON.stringify(data));
   };
 
