@@ -5,11 +5,12 @@ import "./SchoolSearch.scss";
 const SchoolSearch = ({
   name,
   setName,
-  searchClick,
+  requestApi,
   searchSchool,
   schoolList,
   localCode,
   history,
+  setSearchDo,
 }) => {
   return (
     <div className="center">
@@ -28,7 +29,8 @@ const SchoolSearch = ({
             className="SchoolSearch-Searching-button"
             type="submit"
             onClick={(e) => {
-              searchClick(e);
+              requestApi(e);
+              setSearchDo(true);
             }}
           >
             검색
@@ -37,10 +39,10 @@ const SchoolSearch = ({
         <div className="SchoolSearch-div">
           {searchSchool ? (
             <div className="SchoolSearch-div-result">
-              {schoolList.map((school) => (
+              {schoolList.map((school, index) => (
                 <div
                   className="SchoolSearch-div-result-button"
-                  key={school.key}
+                  key={index}
                   onClick={() => {
                     localCode(school);
                     history.push("/time");
@@ -52,16 +54,14 @@ const SchoolSearch = ({
               ))}
             </div>
           ) : (
-            <span className="SchoolSearch-div-please">
-              학교를 검색해 주세요
-            </span>
+            <div className="SchoolSearch-div-please">
+              <span>학교를 검색해 주세요</span>
+            </div>
           )}
         </div>
       </div>
     </div>
   );
 };
-
-// loaclstorage에 getTime이라는 이름으로 data를 json형으로 저장
 
 export default withRouter(SchoolSearch);

@@ -7,9 +7,9 @@ const TimeInfo = ({
   handleResetDay,
   handlePlusDay,
   school_name,
-  school_locate,
   meals,
   status,
+  reSearch,
 }) => {
   return (
     <div className="center">
@@ -80,6 +80,11 @@ const TimeInfo = ({
               </div>
             </div>
           )}
+        </div>
+        <div className="Time-againSearch">
+          <div className="Time-againSearch-Button" onClick={() => reSearch()}>
+            학교 검색하기
+          </div>
         </div>
       </div>
     </div>
